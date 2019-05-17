@@ -8,25 +8,26 @@ class Totals extends React.Component {
 
     discount = (e) => {
         console.log(e.target.value);
-
-        const fiveOff = '5 off 2019';
-        const TenOff = '10 off 2019';
-        const fifteenOff = '15 off 2019';
+   
+        const fiveOff = '5';
+        const TenOff = '10';
+        const fifteenOff = '15';
         const code = e.target.value.toLowerCase();
-
+        const total = this.props.total;
 
         if(code === fiveOff) {
+    
             this.setState({
                 discountAmount: -5
             })
         }
 
-        else if(code === TenOff) {
+        else if(code === TenOff && total > 50) {
             this.setState({
                 discountAmount: -10
             })
         }
-       else if(code === fifteenOff) {
+       else if(code === fifteenOff && total > 75) {
             this.setState({
                 discountAmount: -15
             })
@@ -38,13 +39,16 @@ class Totals extends React.Component {
     }
 
     render() {
+
         return (
             <div className ="Totals">
 
-                {this.props.totals - this.state.discountAmount}
+                {this.props.total - this.state.discountAmount}
 
                 discount code: 
                 <input type ="text" onChange={this.discount} placeholder="enter discount"/>
+
+              
 
             </div>
         )

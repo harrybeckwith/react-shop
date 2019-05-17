@@ -39,11 +39,15 @@ class App extends React.Component {
 
   render() {
 
-    const totals = this.state.basket.reduce(function(prev, cur) {
+    const total = this.state.basket.reduce(function(prev, cur) {
 
         return prev + cur.price;
     }, 0)
 
+    const checkUsername = obj => obj.category === 'Women’s Footwear';
+    console.log(this.state.basket.some(checkUsername))
+
+  
     return (
       <div className="container">
 
@@ -59,7 +63,8 @@ class App extends React.Component {
          <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
       ))}
 
-        <Totals totals={totals}/>
+        <Totals total={total} basket={this.state.basket}/>
+   
       </div>
     );
   }
