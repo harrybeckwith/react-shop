@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import './reset';
+@import './variables';
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 3.2rem 1.6rem;
+    width: 100%;
+    max-width: 1170px;
+}
+
+.products {
+
+
+    @media(min-width: 480px) {
+        display:flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+.product  {
+    border: 1px solid #ececec;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: .1s linear;
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid darken(#ececec, 10%);
+    }
+    
+    &__img {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        font-size: 13px;
+        margin-bottom: 3px;
+        color: $lightText;
+        &--title {
+            color: $darkText;
+            font-weight: bold;
+        }
+    }
+
+
+    @media(min-width: 480px) {
+        width: 45%;
+    }
+
+    @media(min-width: 768px) {
+        width: 22%;
+    }
+
+}
+
+.basket  {
+    border-bottom: 1px solid #ececec;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: .1s linear;
+
+    
+    &__img {
+        width: 50px;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        font-size: 13px;
+        margin-bottom: 3px;
+        color: $lightText;
+        &--title {
+            color: $darkText;
+            font-weight: bold;
+        }
+    }
+
+
+    @media(min-width: 480px) {
+        width: 45%;
+    }
+
+    @media(min-width: 768px) {
+        width: 22%;
+    }
+
+}

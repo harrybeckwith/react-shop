@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles/App.scss";
+import stock from "./stock";
+import Product from "./components/Product";
+import Basket from "./components/Basket";
+import Totals from "./components/Totals";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    stock,
+    basket: [],
+  };
+
+  addToBag = (curr) => {
+
+    const basket = this.state.basket.slice();
+    basket.push(this.state.stock[curr]);
+
+
+    this.setState({
+        basket,
+    })
+
+
+  }
+
+  removeFromBag = (curr) => {
+
+    const basket = this.state.basket.slice();
+    basket.splice(curr, 1)
+
+
+    this.setState({
+        basket,
+    })
+
+
+  }
+
+  render() {
+
+    const totals = this.state.basket.reduce(function(prev, cur) {
+
+        return prev + cur.price;
+    }, 0)
+
+    return (
+      <div className="container">
+
+      <div className="products">
+      
+        {Object.keys(this.state.stock).map((item, index)=> (
+
+            <Product key={index}index={index} item={this.state.stock[item]} addToBag={this.addToBag}/>
+        ))}
+
+      </div>
+      {Object.keys(this.state.basket).map((item, index)=> (
+         <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
+      ))}
+
+        <Totals totals={totals}/>
+      </div>
+    );
+  }
 }
 
 export default App;
