@@ -9,6 +9,8 @@ class App extends React.Component {
   state = {
     stock,
     basket: [],
+    highDiscount: false,
+    dicountAmount: 0,
   };
 
   addToBag = (curr) => {
@@ -37,6 +39,12 @@ class App extends React.Component {
 
   }
 
+  checkCodes = () => {
+    const checkUsername = obj => obj.category === 'Women’s Footwear' || obj.category === 'Men’s Footwear';
+    const highDiscount = this.state.basket.some(checkUsername);
+    return highDiscount;
+  }
+
   render() {
 
     const total = this.state.basket.reduce(function(prev, cur) {
@@ -44,9 +52,8 @@ class App extends React.Component {
         return prev + cur.price;
     }, 0)
 
-    const checkUsername = obj => obj.category === 'Women’s Footwear';
-    console.log(this.state.basket.some(checkUsername))
 
+    const shoeDiscount = this.checkCodes();
   
     return (
       <div className="container">
@@ -63,7 +70,7 @@ class App extends React.Component {
          <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
       ))}
 
-        <Totals total={total} basket={this.state.basket}/>
+        <Totals discountAmount ={this.state.dicountAmount} total={total} basket={this.state.basket} shoeDiscount={shoeDiscount}/>
    
       </div>
     );
