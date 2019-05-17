@@ -29,8 +29,7 @@ body {
     }
 }
 
-.products {
-
+.products{
 
     @media(min-width: 480px) {
         display:flex;
@@ -77,6 +76,26 @@ body {
 
 }
 
+.baskets {
+
+    @media(min-width: 480px) {
+        display:flex;
+        flex-wrap: wrap;
+    }
+}
+
+.bag {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid;
+    margin-bottom: 50px;
+    border-radius: 3px;
+
+    &__title {
+        font-size: 22px;
+    }
+}
+
 .basket  {
     border-bottom: 1px solid #ececec;
     text-align: center;
@@ -110,4 +129,14 @@ body {
         width: 22%;
     }
 
+}
+
+.total {
+
+    &__price {
+
+        &__hl {
+            font-weight: bold;
+        }
+    }
 }

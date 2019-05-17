@@ -58,6 +58,17 @@ class App extends React.Component {
     return (
       <div className="container">
 
+
+    <div className="bag">
+    <h3 className="bag__title"> Basket </h3>
+    <Totals discountAmount ={this.state.dicountAmount} total={total} basket={this.state.basket} shoeDiscount={shoeDiscount}/>
+    <div className="baskets">
+      {Object.keys(this.state.basket).map((item, index)=> (
+        <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
+      ))}
+    </div>
+    </div>
+
       <div className="products">
       
         {Object.keys(this.state.stock).map((item, index)=> (
@@ -66,11 +77,8 @@ class App extends React.Component {
         ))}
 
       </div>
-      {Object.keys(this.state.basket).map((item, index)=> (
-         <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
-      ))}
 
-        <Totals discountAmount ={this.state.dicountAmount} total={total} basket={this.state.basket} shoeDiscount={shoeDiscount}/>
+ 
    
       </div>
     );

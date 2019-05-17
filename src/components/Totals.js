@@ -40,9 +40,9 @@ class Totals extends React.Component {
     render() {
 
         return (
-            <div className ="Totals">
-                <p> total: £{this.props.total - this.state.discountAmount} </p>
-                discount code: 
+            <div className ="total">
+                <p className="total__price"> Total: <span className="total__price__hl">£{this.props.total - this.state.discountAmount}</span></p>
+                Discount code: 
                 <input type ="text" onKeyUp={this.discount} placeholder="enter discount code"/>
                 <p>Voucher codes!</p>
                 <p> £5.00 off your order use code: 5 </p>
