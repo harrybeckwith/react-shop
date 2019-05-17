@@ -11,7 +11,7 @@ class Basket extends React.Component {
         <p className="basket__text">{this.props.item.discount}</p>
         <p className="basket__text">Quanity: {this.props.item.quanity}</p>
         <p className="basket__text">£{this.props.item.price}</p>
-        <div className="basket__add" onClick={()=> this.props.removeFromBag(this.props.index)}>Remove from bag</div>
+        <div className="basket__add btn" onClick={()=> this.props.removeFromBag(this.props.index)}>Remove from bag</div>
     </div>
 
     );

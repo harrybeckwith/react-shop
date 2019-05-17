@@ -41,11 +41,9 @@ class Totals extends React.Component {
 
         return (
             <div className ="Totals">
-                <p> total:   {this.props.total - this.state.discountAmount} </p>
-              
-
+                <p> total: £{this.props.total - this.state.discountAmount} </p>
                 discount code: 
-                <input type ="text" onKeyUp={this.discount} placeholder="enter discount"/>
+                <input type ="text" onKeyUp={this.discount} placeholder="enter discount code"/>
                 <p>Voucher codes!</p>
                 <p> £5.00 off your order use code: 5 </p>
                 <p> £10.00 off when you spend over £50.00 use code: 10 </p>

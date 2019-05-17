@@ -16,6 +16,19 @@ body {
     max-width: 1170px;
 }
 
+.btn {
+    text-align:center;
+    padding: 5px;
+    border-radius: 3px;
+    color: $dark;
+    background-color: $light;
+    cursor: pointer;
+    transition: .1s linear;
+    &:hover {
+        background-color: darken($light, 10%);
+    }
+}
+
 .products {
 
 
@@ -32,7 +45,7 @@ body {
     padding: 5px;
     border-radius: 3px;
     transition: .1s linear;
-    cursor: pointer;
+
 
     &:hover {
         border: 1px solid darken(#ececec, 10%);
@@ -48,7 +61,7 @@ body {
         margin-bottom: 3px;
         color: $lightText;
         &--title {
-            color: $darkText;
+            color: $dark;
             font-weight: bold;
         }
     }
@@ -83,7 +96,7 @@ body {
         margin-bottom: 3px;
         color: $lightText;
         &--title {
-            color: $darkText;
+            color: $dark;
             font-weight: bold;
         }
     }
