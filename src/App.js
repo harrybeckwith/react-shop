@@ -11,75 +11,87 @@ class App extends React.Component {
     basket: [],
     highDiscount: false,
     dicountAmount: 0,
+    show: false
   };
 
-  addToBag = (curr) => {
-
+  addToBag = curr => {
     const basket = this.state.basket.slice();
     basket.push(this.state.stock[curr]);
 
-
     this.setState({
-        basket,
-    })
+      basket
+    });
+  };
 
-
-  }
-
-  removeFromBag = (curr) => {
-
+  removeFromBag = curr => {
     const basket = this.state.basket.slice();
-    basket.splice(curr, 1)
-
+    basket.splice(curr, 1);
 
     this.setState({
-        basket,
-    })
-
-
-  }
+      basket
+    });
+  };
 
   checkCodes = () => {
-    const checkUsername = obj => obj.category === 'Women’s Footwear' || obj.category === 'Men’s Footwear';
+    const checkUsername = obj =>
+      obj.category === "Women’s Footwear" || obj.category === "Men’s Footwear";
     const highDiscount = this.state.basket.some(checkUsername);
     return highDiscount;
-  }
+  };
+
+  showBasket = () => {
+    this.setState({
+      show: !this.state.show
+    });
+  };
 
   render() {
-
     const total = this.state.basket.reduce(function(prev, cur) {
-
-        return prev + cur.price;
-    }, 0)
-
+      return prev + cur.price;
+    }, 0);
 
     const shoeDiscount = this.checkCodes();
-  
+
     return (
       <div className="container">
+        <img
+          className="shopping-bag"
+          src="/icons/shopping-bag.svg"
+          alt="shopping bag icon"
+          onClick={this.showBasket}
+        />
+        <div className={`bag ${this.state.show ? "show" : "hide"}`}>
+          <h3 className="bag__title"> Basket </h3>
 
+          <Totals
+            discountAmount={this.state.dicountAmount}
+            total={total}
+            basket={this.state.basket}
+            shoeDiscount={shoeDiscount}
+          />
 
-    <div className="bag">
-    <h3 className="bag__title"> Basket </h3>
-    <Totals discountAmount ={this.state.dicountAmount} total={total} basket={this.state.basket} shoeDiscount={shoeDiscount}/>
-    <div className="baskets">
-      {Object.keys(this.state.basket).map((item, index)=> (
-        <Basket key={index}index={index} item={this.state.basket[item]} removeFromBag={this.removeFromBag}/>
-      ))}
-    </div>
-    </div>
+          <div className="baskets">
+            {Object.keys(this.state.basket).map((item, index) => (
+              <Basket
+                key={index}
+                index={index}
+                item={this.state.basket[item]}
+                removeFromBag={this.removeFromBag}
+              />
+            ))}
+          </div>
+        </div>
 
-      <div className="products">
-      
-        {Object.keys(this.state.stock).map((item, index)=> (
-
-            <Product key={index}index={index} item={this.state.stock[item]} addToBag={this.addToBag}/>
-        ))}
-
-      </div>
-
- 
-   
+        <div className="products">
+          {Object.keys(this.state.stock).map((item, index) => (
+            <Product
+              key={index}
+              index={index}
+              item={this.state.stock[item]}
+              addToBag={this.addToBag}
+            />
+          ))}
+        </div>
       </div>
     );
   }
