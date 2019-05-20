@@ -17,12 +17,18 @@ class Product extends React.Component {
         <p className="product__text">{this.props.item.discount}</p>
         <p className="product__text">Quanity: {this.props.item.quanity}</p>
         <p className="product__text">£{this.props.item.price}</p>
-        <div
-          className="product__add btn"
-          onClick={() => this.props.addToBag(this.props.index)}
-        >
-          Add to bag
-        </div>
+
+        {//Check if message failed
+        this.props.item.quanity > 0 ? (
+          <div
+            className="product__add btn"
+            onClick={() => this.props.addToBag(this.props.index)}
+          >
+            Add to bag
+          </div>
+        ) : (
+          <div className="product__out">Out of stock !</div>
+        )}
       </div>
     );
   }

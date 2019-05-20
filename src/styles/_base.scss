@@ -1,0 +1,39 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 3.2rem 1.6rem;
+  max-width: 1170px;
+  position: relative;
+}
+
+.btn {
+  text-align: center;
+  padding: 5px;
+  border-radius: 3px;
+  color: $dark;
+  background-color: $light;
+  cursor: pointer;
+  transition: 0.1s linear;
+  &:hover {
+    background-color: darken($light, 10%);
+  }
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.title {
+  &-bold {
+    font-weight: bold;
+  }
+}

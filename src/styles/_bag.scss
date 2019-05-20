@@ -1,0 +1,71 @@
+.bag {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid;
+  margin-bottom: 50px;
+  border-radius: 3px;
+
+  &__title {
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
+.shopping-bag {
+  width: 34px;
+  position: absolute;
+  right: 26px;
+  top: 9px;
+  cursor: pointer;
+}
+
+.baskets {
+  @media (min-width: 480px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.basket {
+  border-bottom: 1px solid #ececec;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 5px;
+  border-radius: 3px;
+  transition: 0.1s linear;
+  margin: 10px;
+
+  &__img {
+    width: 50px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: $lightText;
+    &--title {
+      color: $dark;
+      font-weight: bold;
+    }
+  }
+
+  @media (min-width: 480px) {
+    width: 45%;
+  }
+
+  @media (min-width: 768px) {
+    width: 22%;
+  }
+}
+
+.voucher {
+  background: #f9f9f9;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.discount {
+  display: flex;
+}

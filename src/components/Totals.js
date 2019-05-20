@@ -1,18 +1,17 @@
 import React from "react";
 
 class Totals extends React.Component {
-  state = {
-    discountAmount: null
+  getDiscount = e => {
+    const discountCode = e.target.value.toLowerCase();
+    this.props.getDiscountCode(discountCode);
   };
 
-  discount = e => {
-    console.log(e.target.value);
-
+  discount = () => {
     const fiveOff = "5";
     const TenOff = "10";
     const fifteenOff = "15";
-    const code = e.target.value.toLowerCase();
     const total = this.props.total;
+    const code = this.props.discountCode;
 
     let amount = 0;
 
@@ -26,37 +25,41 @@ class Totals extends React.Component {
     } else if (code === fifteenOff && total > 75 && this.props.shoeDiscount) {
       amount = 15;
       alert("£15.00 off your order, press okay to apply!");
+    } else if (code !== fiveOff && code !== TenOff && code !== fifteenOff) {
+      alert("invalid code");
     }
 
-    this.setState({
-      discountAmount: amount
-    });
+    this.props.checkDiscount(amount);
   };
 
   render() {
     return (
-      <div className="total">
-        <p className="total__price">
-          {" "}
-          Total:{" "}
-          <span className="total__price__hl">
-            £{this.props.total - this.state.discountAmount}
-          </span>
+      <div>
+        <p className="title-bold">
+          Total: £{this.props.total - this.props.discountAmount}
         </p>
-        Discount code:
-        <input
-          type="text"
-          onKeyUp={this.discount}
-          placeholder="enter discount code"
-        />
-        <p>Voucher codes!</p>
-        <p> £5.00 off your order use code: 5 </p>
-        <p> £10.00 off when you spend over £50.00 use code: 10 </p>
-        <p>
-          {" "}
-          £15.00 off when you have bought at least one footwear item and spent
-          over £75.00 use code: 15{" "}
-        </p>
+        <p className="title-bold"> Enter voucher code:</p>
+
+        <div className="discount">
+          <input
+            type="text"
+            onKeyUp={this.getDiscount}
+            placeholder="voucher code"
+          />
+          <div className="btn" onClick={this.discount}>
+            check code
+          </div>
+        </div>
+
+        <div className="voucher">
+          <p className="title-bold">Discount voucher codes!</p>
+          <p> £5.00 off your order use code: 5 </p>
+          <p> £10.00 off when you spend over £50.00 use code: 10 </p>
+          <p>
+            £15.00 off when you have bought at least one footwear item and spent
+            over £75.00 use code: 15
+          </p>
+        </div>
       </div>
     );
   }

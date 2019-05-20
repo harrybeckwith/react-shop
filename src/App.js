@@ -10,7 +10,8 @@ class App extends React.Component {
     stock,
     basket: [],
     highDiscount: false,
-    dicountAmount: 0,
+    discountAmount: 0,
+    discountCode: "",
     show: false
   };
 
@@ -28,7 +29,8 @@ class App extends React.Component {
     basket.splice(curr, 1);
 
     this.setState({
-      basket
+      basket,
+      discountAmount: 0
     });
   };
 
@@ -42,6 +44,18 @@ class App extends React.Component {
   showBasket = () => {
     this.setState({
       show: !this.state.show
+    });
+  };
+
+  checkDiscount = discountAmount => {
+    this.setState({
+      discountAmount
+    });
+  };
+
+  getDiscountCode = discountCode => {
+    this.setState({
+      discountCode
     });
   };
 
@@ -64,10 +78,13 @@ class App extends React.Component {
           <h3 className="bag__title"> Basket </h3>
 
           <Totals
-            discountAmount={this.state.dicountAmount}
+            discountAmount={this.state.discountAmount}
+            getDiscountCode={this.getDiscountCode}
+            discountCode={this.state.discountCode}
             total={total}
             basket={this.state.basket}
             shoeDiscount={shoeDiscount}
+            checkDiscount={this.checkDiscount}
           />
 
           <div className="baskets">

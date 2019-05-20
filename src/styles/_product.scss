@@ -1,0 +1,46 @@
+.products {
+  @media (min-width: 480px) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.product {
+  border: 1px solid $offWhite;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px 10px;
+  border-radius: 3px;
+  transition: 0.1s linear;
+
+  &:hover {
+    border: 1px solid darken($offWhite, 10%);
+  }
+
+  &__out {
+    color: red;
+  }
+
+  &__img {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: $lightText;
+    &--title {
+      color: $dark;
+      font-weight: bold;
+    }
+  }
+
+  @media (min-width: 480px) {
+    width: 45%;
+  }
+
+  @media (min-width: 768px) {
+    width: 22%;
+  }
+}
