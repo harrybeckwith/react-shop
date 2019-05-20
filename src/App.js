@@ -33,11 +33,12 @@ class App extends React.Component {
       discountAmount: 0
     });
   };
-
+  // check if footwear is in basket
+  // apply higher discount
   checkCodes = () => {
-    const checkUsername = obj =>
+    const checkCategory = obj =>
       obj.category === "Women’s Footwear" || obj.category === "Men’s Footwear";
-    const highDiscount = this.state.basket.some(checkUsername);
+    const highDiscount = this.state.basket.some(checkCategory);
     return highDiscount;
   };
 
@@ -60,6 +61,7 @@ class App extends React.Component {
   };
 
   render() {
+    // get a total from basket
     const total = this.state.basket.reduce(function(prev, cur) {
       return prev + cur.price;
     }, 0);

@@ -18,7 +18,7 @@ class Product extends React.Component {
         <p className="product__text">Quanity: {this.props.item.quanity}</p>
         <p className="product__text">£{this.props.item.price}</p>
 
-        {//Check if message failed
+        {//Check if in stock
         this.props.item.quanity > 0 ? (
           <div
             className="product__add btn"

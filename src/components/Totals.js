@@ -1,18 +1,19 @@
 import React from "react";
 
 class Totals extends React.Component {
+  // get user input
   getDiscount = e => {
     const discountCode = e.target.value.toLowerCase();
     this.props.getDiscountCode(discountCode);
   };
 
+  // check discount codes
   discount = () => {
     const fiveOff = "5";
     const TenOff = "10";
     const fifteenOff = "15";
     const total = this.props.total;
     const code = this.props.discountCode;
-
     let amount = 0;
 
     if (code === fiveOff && this.props.basket.length > 0) {
