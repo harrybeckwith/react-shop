@@ -23,7 +23,7 @@ From here the the product component loops over the stock data to create a produc
 This add to basket button, gets the clicked product and pushes this to the basket state. The basket component loops through the basket data to show which items are in the basket. On each basket item is a delete button, which removes the item from the basket state.
 
 The totals component holds the total amount of products currently in the basket, by checking the basket state price and adding.
-Voucher codes are checked within the totals component, and are reduced if the voucher criteria is met.
+Voucher codes are checked within the totals component, and are reduced if the voucher criteria is met. An error is displayed if incorrect code.
 
 Each component has its own .scss file within the styles folder, and is imported into the App.scss file.
 
